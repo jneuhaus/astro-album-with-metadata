@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getAlbumImages } from '../utils/albums';
+import { getImages, getImagesMetadata } from '../utils/albums';
 
 interface Props {
     album: string,
@@ -8,43 +8,45 @@ interface Props {
 }
 
 const {album, title} = Astro.props;
-const albumImages = await getAlbumImages(album);
+const images  = await getImages(album);
+const imagesMetadata = await getImagesMetadata();
 ---
 <h1>{title}</h1>
 <div class="image-gallery bg-dark">
-    {
-        albumImages.map( (albumImage) => {
-            let width = albumImage.width / 24;
-            let height = albumImage.height / 24;
-            let title = albumImage.meta.data ? albumImage.meta.data.title : '';
-            let description = albumImage.meta.data ? albumImage.meta.data.description : '';
-            return (
-                <div>
-                    <button class="btn btn-transparent" type="button" data-bs-toggle="modal" data-bs-target={'#' + albumImage.meta.domId}>
-                        <Image class="image-gallery-preview" src={albumImage} width={width} height={height} alt={title} loading="eager"/>
-                    </button>
+{
+    images.map( (image) => {
+        let width = image.width / 24;
+        let height = image.height / 24;
+        const imageMetadata = imagesMetadata.find((item) => image.src.includes(item.id));
+        let title = imageMetadata ? imageMetadata.data.title : '';
+        let description = imageMetadata ? imageMetadata.data.description : '';
+        return (
+            <div>
+                <button class="btn btn-transparent" type="button" data-bs-toggle="modal" data-bs-target={'#' + image.src}>
+                    <Image class="image-gallery-preview" src={image} width={width} height={height} alt={title} loading="eager"/>
+                </button>
 
-                    <div class="modal fade" id={albumImage.meta.domId} tabindex="-1" aria-labelledby={albumImage.meta.domId + 'Label'} aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title" id={albumImage.meta.domId + 'Label'}>{title}</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <Image class="image-gallery-view" src={albumImage} alt={title} />
-                                </div>
-                                <div class="modal-footer">
-                                    <h4>Description:&nbsp;{description}&nbsp;</h4>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
+                <div class="modal fade" id={image.src} tabindex="-1" aria-labelledby={image.src + 'Label'} aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title" id={image.src + 'Label'}>{title}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <Image class="image-gallery-view" src={image} alt={title} />
+                            </div>
+                            <div class="modal-footer">
+                                <h4>Description:&nbsp;{description}&nbsp;</h4>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            )
-        })
-    }
+            </div>
+        )
+    })
+}
 </div>
 <style>
     .image-gallery {

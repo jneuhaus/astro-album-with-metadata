@@ -1,8 +1,8 @@
 import type {ImageMetadata} from "astro";
 import {getCollection} from "astro:content";
+import {getImage} from 'astro:assets';
 
-export async function getAlbumImages(album: string) {
-    const imagesMetadata = await getImagesMetadata();
+export async function getImages(album: string) {
 
     // 1. List all album files from collections path
     let images = import.meta.glob<{ default: ImageMetadata }>(
@@ -19,17 +19,7 @@ export async function getAlbumImages(album: string) {
         Object.values(images).map((image) => image().then((mod) => mod.default))
     );
 
-    // 4. Extend Image with domId and ImageMetadata
-    const extendedImages = resolvedImages.map((image) => {
-        const idx_start = image.src.lastIndexOf('/') + 1;
-        const idx_end = image.src.lastIndexOf('.');
-        const domId = 'id_' + image.src.substring(idx_start, idx_end);
-        const imageMetadata = imagesMetadata.find( (item) => image.src.includes(item.id));
-        const meta = { domId, ...imageMetadata };
-        return { ...image, meta };
-    });
-
-    return extendedImages.sort();
+    return resolvedImages.sort();
 }
 
 export async function getImagesMetadata() {

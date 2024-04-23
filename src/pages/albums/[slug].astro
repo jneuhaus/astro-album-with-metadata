@@ -1,8 +1,7 @@
 ---
-import { getAlbumImages, getImagesMetadata } from '../../utils/albums';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import Album from '../../components/Album.astro'
+import JustifiedGallery from "../../components/JustifiedGallery.astro";
 
 export async function getStaticPaths() {
     const albums = await getCollection("albums");
@@ -22,5 +21,5 @@ export async function getStaticPaths() {
 const { album } = Astro.props;
 ---
 <Layout title={album.data.title}>
-    <Album album={album.slug} title={album.data.title} />
+    <JustifiedGallery album={album.slug} title={album.data.title} />
 </Layout>

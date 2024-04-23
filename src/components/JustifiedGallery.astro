@@ -1,0 +1,49 @@
+---
+import "../../public/css/justifiedGallery.min.css";
+import "../../public/css/lightgallery-bundle.css";
+import { Image, getImage } from 'astro:assets';
+import { getImages, getImagesMetadata } from '../utils/albums';
+
+interface Props {
+    album: string,
+    title?: string;
+}
+
+const {album, title} = Astro.props;
+const images  = await getImages(album);
+const imagesMetadata = await getImagesMetadata();
+---
+<h1>{title}</h1>
+<div id={album} class="gallery-container">
+{
+    images.map( async (image) => {
+        const width = image.width / 24;
+        const height = image.height / 24;
+        const imageMetadata = imagesMetadata.find((item) => image.src.includes(item.id));
+        const title = imageMetadata ? imageMetadata.data.title : '&nbsp;';
+        const description = imageMetadata ? imageMetadata.data.description : '&nbsp;';
+        const imageLabel = '<h4>' + title + '</h4><p>' + description + '</p>';
+        const optImage = await getImage({src: image, format: 'webp'});
+
+        return (
+
+                <a class="gallery-item" data-src={optImage.src} data-sub-html={imageLabel}>
+                    <Image src={image} width={width} height={height} alt={title} loading="eager"/>
+                </a>
+
+        )
+    })
+}
+</div>
+
+<script src="/js/jquery-3.7.1.min.js" is:inline></script>
+<script src="/js/jquery.justifiedGallery.min.js" is:inline></script>
+<script src="/js/lightgallery.min.js" is:inline></script>
+
+<script is:inline define:vars={{album}}>
+    jQuery(document).ready( () => {
+        $('#' + album).justifiedGallery().on("jg.complete", function() {
+            lightGallery(document.getElementById(album));
+        });
+    });
+</script>
