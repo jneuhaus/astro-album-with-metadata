@@ -39,11 +39,17 @@ const imagesMetadata = await getImagesMetadata();
 <script src="/js/jquery-3.7.1.min.js" is:inline></script>
 <script src="/js/jquery.justifiedGallery.min.js" is:inline></script>
 <script src="/js/lightgallery.min.js" is:inline></script>
+<script src="/js/lg-autoplay.min.js" is:inline></script>
+<script src="/js/lg-fullscreen.min.js" is:inline></script>
+<script src="/js/lg-rotate.min.js" is:inline></script>
+<script src="/js/lg-thumbnail.min.js" is:inline></script>
 
 <script is:inline define:vars={{album}}>
     jQuery(document).ready( () => {
         $('#' + album).justifiedGallery().on("jg.complete", function() {
-            lightGallery(document.getElementById(album));
+            lightGallery(document.getElementById(album), {
+                plugins: [lgAutoplay, lgFullscreen, lgRotate, lgThumbnail]
+            });
         });
     });
 </script>
