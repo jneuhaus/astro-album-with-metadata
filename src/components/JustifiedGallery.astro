@@ -13,7 +13,6 @@ const {album, title} = Astro.props;
 const images  = await getImages(album);
 const imagesMetadata = await getImagesMetadata();
 ---
-<h1>{title}</h1>
 <div id={album} class="gallery-container">
 {
     images.map( async (image) => {
@@ -26,11 +25,9 @@ const imagesMetadata = await getImagesMetadata();
         const optImage = await getImage({src: image, format: 'webp'});
 
         return (
-
-                <a class="gallery-item" data-src={optImage.src} data-sub-html={imageLabel}>
-                    <Image src={image} width={width} height={height} alt={title} loading="eager"/>
-                </a>
-
+            <a class="gallery-item" data-src={optImage.src} data-sub-html={imageLabel}>
+                <Image src={image} width={width} height={height} alt={title} loading="eager"/>
+            </a>
         )
     })
 }
@@ -46,8 +43,10 @@ const imagesMetadata = await getImagesMetadata();
 
 <script is:inline define:vars={{album}}>
     jQuery(document).ready( () => {
+        const lgContainer = document.getElementById(album);
         $('#' + album).justifiedGallery().on("jg.complete", function() {
-            lightGallery(document.getElementById(album), {
+            lightGallery(lgContainer, {
+                videojs: true,
                 plugins: [lgAutoplay, lgFullscreen, lgRotate, lgThumbnail]
             });
         });
