@@ -10,10 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.12.2",
-    "sharp": "^0.33.4"
+    "astro": "^4.15.5",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@types/node": "^20.14.9"
+    "@types/node": "^20.16.5"
   }
 }
