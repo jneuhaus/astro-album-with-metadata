@@ -1,3 +1,41 @@
+<style>
+.dropdown-menu {
+	min-width: 199px;
+}
+.dropdown-menu.columns-3 {
+	min-width: 399px;
+}
+.dropdown-menu.columns-4 {
+	min-width: 599px;
+}
+.dropdown-menu li a {
+	padding: 4px 15px;
+	font-weight: 299;
+}
+.multi-column-dropdown {
+	list-style: none;
+  margin: -1px;
+  padding: -1px;
+}
+.multi-column-dropdown li a {
+	display: block;
+	clear: both;
+	line-height: 0.428571429;
+	color: #332;
+	white-space: normal;
+}
+.multi-column-dropdown li a:hover {
+	text-decoration: none;
+	color: #262625;
+	background-color: #998;
+}
+@media (max-width: 766px) {
+	.dropdown-menu.multi-column {
+		min-width: 239px !important;
+		overflow-x: hidden;
+	}
+}
+</style>
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Home</a>
@@ -6,21 +44,62 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Albums
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/album1">Album One</a></li>
-            <li><a class="dropdown-item" href="/album2">Album Two</a></li>
-            <li><a class="dropdown-item" href="/album3">Album Three</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/albums">Albums</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/jalbum1">Justified Album One</a></li>
-            <li><a class="dropdown-item" href="/jalbum2">Justified Album Two</a></li>
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Albums </a>
+          <ul class="dropdown-menu" style="min-width: 256px;">
+            <li>
+                <a class='btn btn-sm btn-outline-light m-1' href="/album1">1960s</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/album2">1970s</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/album3">1980s</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/jalbum1">1990s</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/jalbum2">2000</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/album1">2001</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/album2">2002</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/album3">2003</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/jalbum1">2004</a>
+                <a class='btn btn-sm btn-outline-light m-1' href="/jalbum2">2005</a>
+            </li>
           </ul>
         </li>
+        <li class="dropdown">
+	            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Three Column <b class="caret"></b></a>
+	            <ul class="dropdown-menu multi-column columns-3">
+		            <div class="row">
+			            <div class="col-sm-4">
+				            <ul class="multi-column-dropdown">
+					            <li><a href="#">Action</a> &nbsp; <a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">One more separated link</a></li>
+				            </ul>
+			            </div>
+			            <div class="col-sm-4">
+				            <ul class="multi-column-dropdown">
+					            <li><a href="#">Action</a></li>
+					            <li><a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">One more separated link</a></li>
+				            </ul>
+			            </div>
+			            <div class="col-sm-4">
+				            <ul class="multi-column-dropdown">
+					            <li><a href="#">Action</a></li>
+					            <li><a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">One more separated link</a></li>
+				            </ul>
+			            </div>
+		            </div>
+	            </ul>
+	        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
