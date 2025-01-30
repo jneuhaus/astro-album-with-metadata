@@ -4,8 +4,8 @@ readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd)"
 
 rm -rf ${SCRIPT_DIR}/dist && mkdir -p ${SCRIPT_DIR}/dist
 
-if [[ $(command -v bun) ]]; then
-  bun run build && cd ${SCRIPT_DIR}/dist && http-server && cd ${SCRIPT_DIR}
+if [[ $(command -v deno) ]]; then
+  deno run build && cd ${SCRIPT_DIR}/dist && http-server && cd ${SCRIPT_DIR}
 else
   npm run build && cd ${SCRIPT_DIR}/dist && http-server && cd ${SCRIPT_DIR}
 fi
