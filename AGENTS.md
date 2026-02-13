@@ -8,7 +8,7 @@ This is an Astro-based photo gallery application with metadata support. The proj
 
 ## Key Technologies
 
-- **Astro 5.17.1** - Static site generator
+- **Astro** - Static site generator
 - **TypeScript** - Type safety
 - **Sharp** - Image processing
 - **Content Collections** - For managing albums and metadata
