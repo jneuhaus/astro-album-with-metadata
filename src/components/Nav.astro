@@ -3,37 +3,28 @@
 	min-width: 199px;
 }
 .dropdown-menu.columns-3 {
-	min-width: 399px;
-}
-.dropdown-menu.columns-4 {
-	min-width: 599px;
-}
-.dropdown-menu li a {
-	padding: 4px 15px;
-	font-weight: 299;
+	min-width: 500px;
+	padding: 0.5rem 0;
 }
 .multi-column-dropdown {
 	list-style: none;
-  margin: -1px;
-  padding: -1px;
+	padding: 0;
+	margin: 0;
 }
 .multi-column-dropdown li a {
 	display: block;
-	clear: both;
-	line-height: 0.428571429;
-	color: #332;
-	white-space: normal;
+	padding: 0.5rem 1rem;
+	color: var(--bs-body-color);
+	text-decoration: none;
 }
 .multi-column-dropdown li a:hover {
+	background-color: var(--bs-tertiary-bg);
 	text-decoration: none;
-	color: #262625;
-	background-color: #998;
 }
-@media (max-width: 766px) {
-	.dropdown-menu.multi-column {
-		min-width: 239px !important;
-		overflow-x: hidden;
-	}
+.multi-column-dropdown .divider {
+	height: 1px;
+	margin: 0.5rem 0;
+	background-color: var(--bs-border-color);
 }
 </style>
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
@@ -62,20 +53,10 @@
           </ul>
         </li>
         <li class="dropdown">
-	            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Three Column <b class="caret"></b></a>
-	            <ul class="dropdown-menu multi-column columns-3">
-		            <div class="row">
-			            <div class="col-sm-4">
-				            <ul class="multi-column-dropdown">
-					            <li><a href="#">Action</a> &nbsp; <a href="#">Another action</a></li>
-					            <li><a href="#">Something else here</a></li>
-					            <li class="divider"></li>
-					            <li><a href="#">Separated link</a></li>
-					            <li class="divider"></li>
-					            <li><a href="#">One more separated link</a></li>
-				            </ul>
-			            </div>
-			            <div class="col-sm-4">
+	            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Three Column <b class="caret"></b></a>
+	            <ul class="dropdown-menu multi-column columns-3 p-0">
+		            <li class="row g-0">
+			            <div class="col-4">
 				            <ul class="multi-column-dropdown">
 					            <li><a href="#">Action</a></li>
 					            <li><a href="#">Another action</a></li>
@@ -83,10 +64,10 @@
 					            <li class="divider"></li>
 					            <li><a href="#">Separated link</a></li>
 					            <li class="divider"></li>
-					            <li><a href="#">One more separated link</a></li>
+					            <li><a href="#">One more link</a></li>
 				            </ul>
 			            </div>
-			            <div class="col-sm-4">
+			            <div class="col-4">
 				            <ul class="multi-column-dropdown">
 					            <li><a href="#">Action</a></li>
 					            <li><a href="#">Another action</a></li>
@@ -94,10 +75,21 @@
 					            <li class="divider"></li>
 					            <li><a href="#">Separated link</a></li>
 					            <li class="divider"></li>
-					            <li><a href="#">One more separated link</a></li>
+					            <li><a href="#">One more link</a></li>
 				            </ul>
 			            </div>
-		            </div>
+			            <div class="col-4">
+				            <ul class="multi-column-dropdown">
+					            <li><a href="#">Action</a></li>
+					            <li><a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+					            <li class="divider"></li>
+					            <li><a href="#">One more link</a></li>
+				            </ul>
+			            </div>
+		            </li>
 	            </ul>
 	        </li>
       </ul>

@@ -2,12 +2,40 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Home">
-	<h1>Hello Astronaut</h1>
-	<ul>
-		<li><a href="/album1">Album One</a></li>
-		<li><a href="/album2">Album Two</a></li>
-		<li><a href="/albums">Albums</a></li>
-		<li><a href="/jalbum1">Justified Album One</a></li>
-		<li><a href="/jalbum2">Justified Album Two</a></li>
-	</ul>
+	<div class="container">
+		<h1>Hello Astronaut</h1>
+		<div class="buttons">
+			<a href="/album1">Album One</a>
+			<a href="/album2">Album Two</a>
+			<a href="/albums">Albums</a>
+			<a href="/jalbum1">Justified Album One</a>
+			<a href="/jalbum2">Justified Album Two</a>
+		</div>
+	</div>
 </Layout>
+
+<style>
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	a {
+		padding: 0.75rem 1.5rem;
+		background-color: #333;
+		color: white;
+		text-decoration: none;
+		border-radius: 0.25rem;
+		width: 12.5rem;
+		text-align: center;
+		white-space: nowrap;
+	}
+	a:hover {
+		background-color: #555;
+	}
+</style>
