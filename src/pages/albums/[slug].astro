@@ -8,7 +8,7 @@ export async function getStaticPaths() {
     const paths = Object.values(albums).map((album) => {
         return {
             params: {
-                slug: album.slug,
+                slug: album.id,
             },
             props: {
                 album,
@@ -21,5 +21,5 @@ export async function getStaticPaths() {
 const { album } = Astro.props;
 ---
 <Layout title={album.data.title}>
-    <JustifiedGallery album={album.slug} title={album.data.title} />
+    <JustifiedGallery album={album.id} title={album.data.title} />
 </Layout>

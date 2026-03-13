@@ -2,7 +2,6 @@
   "version": "5",
   "specifiers": {
     "npm:@types/node@^25.3.2": "25.3.2",
-    "npm:astro@^5.18.0": "5.18.0_@types+node@25.3.2_vite@6.4.1__@types+node@25.3.2__picomatch@4.0.3_zod@3.25.76",
     "npm:sharp@~0.34.5": "0.34.5"
   },
   "npm": {
@@ -2391,7 +2390,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@types/node@^25.3.2",
-        "npm:astro@^5.18.0",
+        "npm:astro@^6.0.4",
         "npm:sharp@~0.34.5"
       ]
     }
