@@ -1,7 +1,6 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@types/node@^25.3.2": "25.3.2",
     "npm:sharp@~0.34.5": "0.34.5"
   },
   "npm": {
@@ -2389,8 +2388,8 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
-        "npm:@types/node@^25.3.2",
-        "npm:astro@^6.0.4",
+        "npm:@types/node@^25.6.0",
+        "npm:astro@^6.1.6",
         "npm:sharp@~0.34.5"
       ]
     }
