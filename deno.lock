@@ -2389,7 +2389,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@types/node@^25.6.0",
-        "npm:astro@^6.1.6",
+        "npm:astro@^6.3.0",
         "npm:sharp@~0.34.5"
       ]
     }
